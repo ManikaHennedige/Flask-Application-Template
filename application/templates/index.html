@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+<h1> this comes directly from the index.html file!</h1>
+<p> We can clearly see how this template extends on our primary 'layout.html' - allowing for much neater code! </p>
+<div class="forms">
+    <div class="col-md-6 offset-md-3">
+        <form name="login" action="{{ url_for('home') }}" method="post" novalidate>
+            <div class="form-group">
+                {{ form.hidden_tag() }}
+
+                <p>
+                    {{ form.username.label }}<br>
+                    {{ form.username(size=35) }}
+                    {% for error in form.username.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.password.label }}<br>
+                    {{ form.password(size=15) }}
+                    {% for error in form.password.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </p>
+
+                <p>
+                    {{ form.submit() }}
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

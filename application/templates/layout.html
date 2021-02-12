@@ -1,0 +1,19 @@
+{% include "includes/header.html" %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{category}}">
+                <p>{{ message }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<!-- the block content is necessary because that's where any content from any inheriting template goes -
+feel free to have different blocks too -->
+<div class="maindiv">
+{% block content %}
+{% endblock %}
+</div> 
+
+{% include "includes/footer.html" %}

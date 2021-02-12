@@ -1,0 +1,23 @@
+{% extends "bootstrap/base.html" %}
+    {% block title %} Title {% endblock %}
+    {% block styles %}
+    <!-- the super() call is necessary to import the styles from Bootstrap -->
+    {{super()}} 
+    <!-- here you may import all your own stylesheets -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    {% endblock %}
+    {% block content %}
+        <div class = "header">
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a href="{{ url_for('index') }}" class="navbar-left"><img width="50" src="{{ url_for('static', filename='images/logo.png') }}"></a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="{{ url_for('index') }}">Home</a></li>
+                    </ul>
+                    <a href="{{ url_for('shutdown') }}"><button type="button" style="margin-right: 0px" class="btn btn-danger navbar-btn navbar-right">Shut Down</button></a>
+                </div>
+            </nav>
+        </div>
+    {% endblock %}
